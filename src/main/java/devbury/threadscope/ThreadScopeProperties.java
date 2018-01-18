@@ -18,7 +18,7 @@ package devbury.threadscope;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = "threadScope")
+@ConfigurationProperties(prefix = "thread-scope")
 public class ThreadScopeProperties {
 
     public static final String DEFAULT_SCOPE_NAME = "request";

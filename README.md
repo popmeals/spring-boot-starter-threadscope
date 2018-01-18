@@ -31,9 +31,9 @@ to asynchronous tasks.
 
 The following properties may be set in your application.properties file to override default values.
 ```properties
-threadScope.poolSize=25
-threadScope.threadNamePrefix=async-
-threadScope.scopeName=request
+thread-scope.pool-size=25
+thread-scope.thread-name-prefix=async-
+thread-scope.scope-name=request
 ```
 
 The default setting of `threadScope.scopeName=request` will replace the default web request scope with the starter's

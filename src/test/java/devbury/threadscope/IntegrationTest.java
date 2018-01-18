@@ -21,25 +21,22 @@ import org.junit.runner.RunWith;
 import org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Scope;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.web.context.WebApplicationContext;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = IntegrationTest.class)
+@SpringBootTest(classes = {IntegrationTest.class, ValueBeanProvider.class})
 @WebAppConfiguration
 @EnableAutoConfiguration
 public class IntegrationTest {
 
     @Autowired
-    ValueBean valueBean;
+    ValueBeanProvider.ValueBean valueBean;
 
     @Autowired
     TaskExecutor taskExecutor;
@@ -72,23 +69,5 @@ public class IntegrationTest {
         });
         Thread.sleep(100);
         assertEquals("TWO", valueBean.getValue());
-    }
-
-    @Bean
-    @Scope(WebApplicationContext.SCOPE_REQUEST)
-    public ValueBean valueBean() {
-        return new ValueBean();
-    }
-
-    public class ValueBean {
-        private String value;
-
-        public String getValue() {
-            return value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
     }
 }

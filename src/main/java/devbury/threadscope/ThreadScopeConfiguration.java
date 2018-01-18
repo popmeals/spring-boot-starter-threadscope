@@ -29,7 +29,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 @Import(SchedulerConfiguration.class)
 public class ThreadScopeConfiguration {
 
-    public static final String SCOPE_NAME_PROPERTY = "threadScope.scopeName";
+    public static final String SCOPE_NAME_PROPERTY = "thread-scope.scope-name";
 
     private static final Logger logger = LoggerFactory.getLogger(ThreadScopeConfiguration.class);
 
