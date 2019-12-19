@@ -29,6 +29,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.util.concurrent.Executor;
 
+@ConditionalOnMissingBean(AsyncConfigurer.class)
 @EnableAsync
 public class SchedulerConfiguration implements AsyncConfigurer {
 
