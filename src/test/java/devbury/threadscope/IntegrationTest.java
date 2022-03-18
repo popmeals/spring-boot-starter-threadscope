@@ -51,7 +51,7 @@ public class IntegrationTest {
 
     @Test
     public void verifyDefaultAsyncConfigurer() {
-        assertEquals(SchedulerConfiguration.class, asyncConfigurer.getClass());
+        assertEquals(ThreadScopeAsyncConfigurer.class, asyncConfigurer.getClass());
         assertEquals(ThreadScopePropagatingScheduler.class, asyncConfigurer.getAsyncExecutor().getClass());
         assertEquals(SimpleAsyncUncaughtExceptionHandler.class, asyncConfigurer.getAsyncUncaughtExceptionHandler()
                 .getClass());

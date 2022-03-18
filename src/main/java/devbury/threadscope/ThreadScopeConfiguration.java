@@ -26,7 +26,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.core.env.ConfigurableEnvironment;
 
 @EnableConfigurationProperties
-@Import(SchedulerConfiguration.class)
+@Import({ThreadScopeAsyncConfigurer.class, SchedulerConfiguration.class})
 public class ThreadScopeConfiguration {
 
     public static final String SCOPE_NAME_PROPERTY = "thread-scope.scope-name";
